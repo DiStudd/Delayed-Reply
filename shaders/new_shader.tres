@@ -1,0 +1,10 @@
+[gd_resource type="VisualShader" format=3 uid="uid://dvsdqt5v2npu6"]
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_73n1q"]
+function = 2
+
+[resource]
+nodes/vertex/0/position = Vector2(400, 220)
+nodes/vertex/1/node = SubResource("VisualShaderNodeColorFunc_73n1q")
+nodes/vertex/1/position = Vector2(-40, 380)
+nodes/vertex/connections = PackedInt32Array(1, 0, 0, 6)

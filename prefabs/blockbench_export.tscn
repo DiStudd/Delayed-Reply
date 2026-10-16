@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://wmvbmtf8a1wt"]
+
+[ext_resource type="PackedScene" uid="uid://demdc1di00iye" path="res://prefabs/laptop.gltf" id="1_02iw0"]
+
+[node name="blockbench_export" unique_id=1137452922 instance=ExtResource("1_02iw0")]
+
+[node name="screen" parent="group7" parent_id_path=PackedInt32Array(2013193504) index="1" unique_id=1446727321]
+transform = Transform3D(1, 0, 0, 0, 0.9723251, 0.23363206, 0, -0.23363206, 0.9723251, 0.025, 0.09166686, 0.725)

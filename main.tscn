@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://cfrhyxgrw488v"]
+
+[ext_resource type="Shader" uid="uid://cqykodrekuk1x" path="res://shaders/light.gdshader" id="1_h2yge"]
+[ext_resource type="Shader" uid="uid://54kyl6ckt6sa" path="res://shaders/starts.gdshader" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://demdc1di00iye" path="res://prefabs/laptop.gltf" id="3_lquwl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0tk4"]
+shader = ExtResource("1_h2yge")
+shader_parameter/contrast = 1.12
+shader_parameter/saturation = 0.9
+shader_parameter/color_levels = 7.0
+shader_parameter/shadow_tint = Color(0.12, 0.2, 0.23, 1)
+shader_parameter/light_tint = Color(1, 0.91, 0.76, 1)
+shader_parameter/shadow_strength = 0.28
+shader_parameter/light_strength = 0.08
+shader_parameter/vignette_strength = 0.16
+shader_parameter/grain_strength = 0.015
+shader_parameter/scanline_strength = 0.0
+shader_parameter/pixel_block_size = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5arm"]
+shader = ExtResource("2_1bvp3")
+shader_parameter/background_color = Color(1.2032688e-08, 9.024516e-09, 0.09518806, 1)
+shader_parameter/nebula_blue = Color(0.035, 0.12, 0.85, 1)
+shader_parameter/nebula_purple = Color(0.48, 0.035, 0.85, 1)
+shader_parameter/nebula_pink = Color(0.95, 0.055, 0.4, 1)
+shader_parameter/nebula_cyan = Color(0.015, 0.65, 0.95, 1)
+shader_parameter/nebula_coverage = 0.27600001311
+shader_parameter/nebula_strength = 0.16800000798
+shader_parameter/nebula_scale = 1.342000016245
+shader_parameter/nebula_detail = 2.29600008531
+shader_parameter/nebula_speed = 0.0110000005225
+shader_parameter/star_density = 78.3270030080325
+shader_parameter/star_amount = 0.89200003911012
+shader_parameter/star_brightness = 2.46800011397012
+shader_parameter/star_color_variety = 1.0
+shader_parameter/bright_star_amount = 1.0
+shader_parameter/twinkle_amount = 0.7810000370975
+shader_parameter/twinkle_speed = 0.49000002001512
+shader_parameter/star_drift_speed = 0.0090000004275
+shader_parameter/object_drift_speed = 0.00999999977648
+shader_parameter/objects_brightness = 0.90400004294
+shader_parameter/galaxy_scale = 1.10800002888
+shader_parameter/show_galaxy = 1.0
+shader_parameter/show_planets = 0.5
+
+[sub_resource type="Sky" id="Sky_xxpdj"]
+sky_material = SubResource("ShaderMaterial_i5arm")
+process_mode = 3
+
+[sub_resource type="Environment" id="Environment_r3fl7"]
+background_mode = 2
+background_energy_multiplier = 1.29
+sky = SubResource("Sky_xxpdj")
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_noarx"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_a202f"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a202f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
+vertex_color_is_srgb = true
+
+[node name="main" type="Node3D" unique_id=595932751]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1338042135]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="PixelView" type="SubViewport" parent="SubViewportContainer" unique_id=516949290]
+handle_input_locally = false
+size = Vector2i(288, 162)
+render_target_update_mode = 4
+
+[node name="LightShader" type="ColorRect" parent="SubViewportContainer/PixelView" unique_id=109423149]
+material = SubResource("ShaderMaterial_a0tk4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/PixelView" unique_id=1319964922]
+environment = SubResource("Environment_r3fl7")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/PixelView" unique_id=1925186619]
+transform = Transform3D(0.72736484, 0.18465161, -0.6609419, 0, 0.96311986, 0.269073, 0.686251, -0.19571425, 0.70053947, -1.4909656, 2.5962863, 2.3956056)
+current = true
+fov = 87.2
+size = 3.392
+near = 0.003
+far = 1094.39
+
+[node name="cube" type="MeshInstance3D" parent="SubViewportContainer/PixelView" unique_id=246143840]
+transform = Transform3D(0.47291726, 0.08858427, -0.35847148, -0.2641218, 0.48820707, -0.22780117, 0.25804773, 0.33735228, 0.4237976, 0.46218693, 0.92434156, -0.0012924075)
+mesh = SubResource("BoxMesh_noarx")
+skeleton = NodePath("../../..")
+
+[node name="cube2" type="MeshInstance3D" parent="SubViewportContainer/PixelView" unique_id=1528025131]
+transform = Transform3D(1.8469148, -0.56654966, 0.056770638, -0.20516877, 1.8461286, 0.16109899, -0.6210975, -2.294547, 0.11559845, -0.5478052, 0.62597656, 0.08831793)
+mesh = SubResource("BoxMesh_noarx")
+skeleton = NodePath("../../..")
+
+[node name="cube3" type="MeshInstance3D" parent="SubViewportContainer/PixelView" unique_id=533975869]
+transform = Transform3D(-0.38824335, 0.43511322, -0.1412217, -0.45499763, -0.38647637, 0.0601106, -0.047373116, 0.14598858, 0.5800368, -0.59338784, 0.6817788, 0.6786034)
+mesh = SubResource("PrismMesh_a202f")
+skeleton = NodePath("../../..")
+
+[node name="plane" type="MeshInstance3D" parent="SubViewportContainer/PixelView" unique_id=1702082013]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.10006702, 0)
+mesh = SubResource("PlaneMesh_a202f")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_a202f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/PixelView" unique_id=1689322031]
+transform = Transform3D(0.02980575, 0, -0.9995557, 0.6710602, 0.7411328, 0.020010341, 0.74080354, -0.67135847, 0.022090016, 4.756812, 3.1344147, 5.4371243)
+light_color = Color(0.48766226, 0.48766214, 0.48766214, 1)
+light_energy = 1.624
+light_volumetric_fog_energy = 2.787
+light_angular_distance = 16.45
+light_specular = 2.924
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 2.892
+shadow_normal_bias = 2.863
+shadow_transmittance_bias = 0.25
+shadow_opacity = 0.68
+shadow_blur = 2.269
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.265
+directional_shadow_max_distance = 50.4
+directional_shadow_pancake_size = 24.7
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/PixelView" unique_id=1326569262]
+transform = Transform3D(0.7353406, -0.5581128, 0.38442728, 0.023178369, 0.5876348, 0.80879426, -0.6773013, -0.58582884, 0.4450479, -0.5748137, 3.3585815, 1.6567383)
+light_color = Color(1.0954857, 0.94153166, 0.7191536, 1)
+light_energy = 0.35
+light_indirect_energy = 2.137
+light_volumetric_fog_energy = 2.787
+light_specular = 0.338
+shadow_enabled = true
+shadow_bias = 0.081
+shadow_opacity = 0.93
+shadow_blur = 2.117
+spot_range = 2094.787
+spot_attenuation = -0.53
+spot_angle = 45.92
+spot_angle_attenuation = 2.462286
+
+[node name="blockbench_export" parent="SubViewportContainer/PixelView" unique_id=2099574162 instance=ExtResource("3_lquwl")]
+transform = Transform3D(-0.55340827, 0.068520725, 0.19272813, 0.02901775, 0.5765882, -0.12167181, -0.20247762, -0.10464688, -0.5441983, -0.46060777, 1.3194834, 0.64734244)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="SubViewportContainer/PixelView" unique_id=782139908]
+transform = Transform3D(0.94195914, -0.08165839, 0.3256454, -0.15141892, 0.7623792, 0.62916636, -0.299642, -0.64195776, 0.7057655, 1.0644103, 3.3988104, 2.080275)
+light_color = Color(1.0954857, 0.32571548, 0.7191536, 1)
+light_energy = 0.917
+light_indirect_energy = 1.65
+light_volumetric_fog_energy = 1.568
+light_specular = 3.262
+shadow_enabled = true
+shadow_bias = 0.081
+shadow_normal_bias = 1.102
+shadow_opacity = 0.96
+shadow_blur = 2.827
+spot_range = 1432.545
+spot_attenuation = 0.08
+spot_angle = 41.34
+spot_angle_attenuation = 4.59479
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/PixelView" unique_id=1877013252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38111472, 2.1715765, 0.50264895)
+light_color = Color(1, 1, 0.3882353, 1)
+light_energy = 0.92
+light_volumetric_fog_energy = 4.33
+light_size = 0.361
+light_specular = 2.206
+shadow_enabled = true
+shadow_transmittance_bias = -1.574
+shadow_blur = 1.711
+
+[node name="Canvas" type="CanvasLayer" parent="." unique_id=1809251334]
+visible = false
+
+[node name="Button" type="Button" parent="Canvas" unique_id=720483429]
+offset_left = 76.0
+offset_top = 57.0
+offset_right = 345.0
+offset_bottom = 150.0
+text = "button"

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c6t1gbkrenvkx"]
+
+[ext_resource type="Texture2D" uid="uid://dk1nmffbec66x" path="res://textures/laptop_1.png" id="1_lquvc"]
+
+[resource]
+emission_enabled = true
+emission = Color(0.89967597, 0.8982393, 0.92785555, 1)
+emission_energy_multiplier = 4.09
+emission_texture = ExtResource("1_lquvc")
